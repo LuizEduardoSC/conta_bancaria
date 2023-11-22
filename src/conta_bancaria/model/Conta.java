@@ -1,6 +1,6 @@
 package conta_bancaria.model;
 
-public class Conta {
+public abstract class Conta {
 	
 	// Definir os Atributos da Classe (Quais caracteristicas temos que preencher quando criarmos a conta)
 	// Todo objeto que for criado na classe "Conta" vai obrgatoriamente ter = numero, agencia, tipo, titular e saldo
@@ -107,7 +107,7 @@ public class Conta {
 		System.out.println("Número da Conta: " + this.numero);
 		System.out.println("Agência: " + this.agencia);
 		System.out.println("Tipo da Conta: " + tipo);
-		System.out.println("Titular da Contaa: " + this.titular);
+		System.out.println("Titular da Conta: " + this.titular);
 		System.out.println("Saldo da Conta: " + this.saldo);		
 	}	
 }
