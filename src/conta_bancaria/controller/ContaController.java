@@ -33,14 +33,12 @@ public class ContaController implements ContaRepository {
 		for (var conta : listaContas) {
 			conta.visualizar(); // Visualizar os dados de cada conta que eu tiver dentro da minha coleção
 		}
-
 	}
 
 	@Override
 	public void cadastrar(Conta conta) {
 		listaContas.add(conta);
 		System.out.println("A conta número: " + conta.getNumero() + " foi criado com Sucesso!");
-
 	}
 
 	@Override
@@ -77,7 +75,7 @@ public class ContaController implements ContaRepository {
 
 		if (conta.isPresent()) {
 			if (conta.get().sacar(valor) == true)
-				System.out.println("A Conta número: " + numero + "foi excluída com sucesso!");
+				System.out.println("O Saque na Conta número: " + numero + " foi efetuado com sucesso!");
 		} else
 			System.out.println("A Conta número: " + numero + "não foi encontrada!");
 	}
@@ -89,7 +87,7 @@ public class ContaController implements ContaRepository {
 
 		if (conta.isPresent()) {
 			    conta.get().depositar (valor);
-				System.out.println("O Depósito na Conta número: " + numero + "foi excluída com sucesso!");
+				System.out.println("O Depósito na Conta número: " + numero + "foi efetuado com sucesso!");
 		} else
 			System.out.println("A Conta número: " + numero + "foi efetuado com sucesso!");
 	}
@@ -100,10 +98,10 @@ public class ContaController implements ContaRepository {
 		Optional<Conta> contaOrigem = buscarNaCollection(numeroOrigem);
 		Optional<Conta> contaDestino = buscarNaCollection(numeroDestino);
 
-		if (contaOrigem.isPresent() && contaOrigem.isPresent()) {
+		if (contaOrigem.isPresent() && contaDestino.isPresent()) {
 			if (contaOrigem.get().sacar(valor) == true)
 				contaDestino.get().depositar(valor);			
-			    System.out.println("A Tranferência da Conta número: "+ numeroOrigem + " para a Conta número: " + numeroDestino + " foi efetuada com sucesso!");
+			System.out.println("A Transferência da Conta numero: " + numeroOrigem + " para a Conta numero: "+ numeroDestino + " foi efetuada com sucesso!");
 		} else
 			System.out.println("A Conta de Origem e/ou Destino não foram encontradas!");
 	}

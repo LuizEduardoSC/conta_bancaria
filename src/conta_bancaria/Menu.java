@@ -109,7 +109,7 @@ public class Menu {
 				break;
 
 			case 2:
-				System.out.println(Cores.TEXT_WHITE_BOLD + "Listar todas as Contas\\n\\n");
+				System.out.println(Cores.TEXT_WHITE_BOLD + "Listar todas as Contas\n\n");
 				contas.listarTodas();
 
 				keyPress();
@@ -158,24 +158,22 @@ public class Menu {
 					    case 2 -> {
 						     System.out.println("Digite o dia do aniversário da conta: ");
 						     aniversario = leia.nextInt();
-						     contas.cadastrar(
-								new ContaPoupanca(numero, agencia, tipo, titular, saldo, aniversario));
-					}
+						     contas.atualizar(new ContaPoupanca(numero, agencia, tipo, titular, saldo, aniversario));
+					   }
 					}
 					
 					
 				}else
 					System.out.println("A conta número: " + numero + "Não foi encontrada!");
 				
-
 				keyPress();
 				break;
 
 			case 5:
-				System.out.println(Cores.TEXT_WHITE_BOLD + "Apagar a Conta\\n\\n");
+				System.out.println(Cores.TEXT_WHITE_BOLD + "Apagar a Conta\n\n");
 
-				System.out.println(Cores.TEXT_RESET + "\nBanco do Brazil com Z - O seu Futuro começa aqui!");
-				numero = leia.nextInt();
+				System.out.println("Digite o número da conta: ");
+				numero = leia.nextInt();	
 
 				contas.deletar(numero);
 
@@ -183,7 +181,7 @@ public class Menu {
 				break;
 
 			case 6:
-				System.out.println(Cores.TEXT_WHITE_BOLD + "Saque\\n\\n");
+				System.out.println(Cores.TEXT_WHITE_BOLD + "Saque\n\n");
 				
 				System.out.println("Digite o número da Conta: ");
 				numero = leia.nextInt();
@@ -197,7 +195,7 @@ public class Menu {
 				break;
 
 			case 7:
-				System.out.println(Cores.TEXT_WHITE_BOLD + "Depósito\\n\\n");
+				System.out.println(Cores.TEXT_WHITE_BOLD + "Depósito\n\n");
 				
 				System.out.println("Digite o número da Conta: ");
 				numero = leia.nextInt();
@@ -216,7 +214,7 @@ public class Menu {
                 System.out.println("Digite o número da Conta de Origem: ");
                 numero = leia.nextInt();
 				
-                System.out.println("Digite o número da Conta de Depósito: ");
+                System.out.println("Digite o número da Conta de Destino: ");
 				numeroDestino = leia.nextInt();
 				
 				if(numero != numeroDestino) {
@@ -245,11 +243,12 @@ public class Menu {
 		System.out.println("Luiz Eduardo - luizeduardoedd1@gmail.com");
 		System.out.println("github.com/LuizEduardoSC");
 		System.out.println("***************************************************");
+		System.out.println(Cores.TEXT_RESET);
 	}
 
 	public static void keyPress() {
 		try {
-
+			
 			System.out.println("\n\nPressione a tecla Enter para continuar...");
 			System.in.read();
 
