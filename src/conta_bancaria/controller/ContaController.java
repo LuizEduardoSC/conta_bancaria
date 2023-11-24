@@ -13,6 +13,8 @@ public class ContaController implements ContaRepository {
 
 	// Variável para receber o número da Conta
 	int numero = 0;
+	
+	
 
 	@Override
 	public void procurarPorNumero(int numero) {
@@ -70,22 +72,44 @@ public class ContaController implements ContaRepository {
 
 	@Override
 	public void sacar(int numero, float valor) {
-		// TODO Auto-generated method stub
+		
+		Optional<Conta> conta = buscarNaCollection(numero);
 
+		if (conta.isPresent()) {
+			if (conta.get().sacar(valor) == true)
+				System.out.println("A Conta número: " + numero + "foi excluída com sucesso!");
+		} else
+			System.out.println("A Conta número: " + numero + "não foi encontrada!");
 	}
 
 	@Override
 	public void depositar(int numero, float valor) {
-		// TODO Auto-generated method stub
+		
+		Optional<Conta> conta = buscarNaCollection(numero);
 
+		if (conta.isPresent()) {
+			    conta.get().depositar (valor);
+				System.out.println("O Depósito na Conta número: " + numero + "foi excluída com sucesso!");
+		} else
+			System.out.println("A Conta número: " + numero + "foi efetuado com sucesso!");
 	}
 
 	@Override
 	public void transferir(int numeroOrigem, int numeroDestino, float valor) {
-		// TODO Auto-generated method stub
+		
+		Optional<Conta> contaOrigem = buscarNaCollection(numeroOrigem);
+		Optional<Conta> contaDestino = buscarNaCollection(numeroDestino);
 
+		if (contaOrigem.isPresent() && contaOrigem.isPresent()) {
+			if (contaOrigem.get().sacar(valor) == true)
+				contaDestino.get().depositar(valor);			
+			    System.out.println("A Tranferência da Conta número: "+ numeroOrigem + " para a Conta número: " + numeroDestino + " foi efetuada com sucesso!");
+		} else
+			System.out.println("A Conta de Origem e/ou Destino não foram encontradas!");
 	}
 
+	
+	
 	/* Métodos Auxiliares */
 
 	public int gerarNumero() {
